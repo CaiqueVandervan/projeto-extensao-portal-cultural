@@ -1,4 +1,12 @@
+"use client"
+
+import { Button } from "@mui/material"
+import { useState } from "react"
+import PublicationModal from "./components/PublicationModal"
+
 const Home = () => {
+
+  const [openPublicationModal, setOpenPublicationModal] = useState<boolean>(false)
 
   return (
     <main className="h-screen w-full p-2">
@@ -7,18 +15,26 @@ const Home = () => {
           Portal UFC
         </header>
         <div className="px-4 pb-4 flex flex-1 ">
-          <div className="bg-amber-300 w-full">
+          <div className="w-full flex items-center justify-center">
             feed
           </div>
-          <div className="bg-amber-900 w-full">
-            publicar
+          <div className="w-full flex items-center justify-center">
+            <Button
+              variant="contained"
+              onClick={() => setOpenPublicationModal(true)}
+              sx={{ background: "#ef4444", }}
+            >
+              Publicar
+            </Button>
           </div>
-          <div className="bg-blue-500 w-full">
+          <div className="w-full flex items-center justify-center">
             eventos
           </div>
         </div>
-        
+
       </section>
+
+      <PublicationModal open={openPublicationModal} onClose={() => setOpenPublicationModal(false)} />
     </main>
   )
 }
