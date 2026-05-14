@@ -22,7 +22,18 @@ const Home = () => {
             <Button
               variant="contained"
               onClick={() => setOpenPublicationModal(true)}
-              sx={{ background: "#ef4444", }}
+              sx={{
+                background: "#ef4444",
+                fontWeight: "bold",
+                paddingX: 3,
+                borderRadius: "14px",
+                transition: "0.2s",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+                "&:hover": {
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                  transform: "translateY(-2px)"
+                },
+              }}
             >
               Publicar
             </Button>

@@ -1,6 +1,6 @@
 "use client"
 
-import { Modal } from "@mui/material"
+import { Box, Modal } from "@mui/material"
 import { useState } from "react"
 import FeedModal from "./FeedModal"
 import EventModal from "./EventModal"
@@ -29,19 +29,54 @@ const PublicationModal = ({ open, onClose }: PublicationModalProps) => {
                 <div>
                     {selectedKindOfModal === undefined && (
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
-                            <div className="bg-blue-400 w-40 rounded-2xl h-20 flex  items-center justify-center" onClick={() => handleChangeModal("feed")}>
+                            <Box sx={{
+                                background: "#60a5fa",
+                                width: "10rem",
+                                height: "5rem",
+                                borderRadius: "2rem",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                color: "white",
+                                fontWeight: "bold",
+                                fontSize: "18px",
+                                border: "2px solid #3b82f6",
+                                transition: "0.2s",
+                                "&:hover": {
+                                    transform: "translateX(-10px) scale(1.07)"
+                                }
+                            }}
+                                onClick={() => handleChangeModal("feed")}>
                                 Feed
-                            </div>
-                            <div className="bg-yellow-500 w-40 rounded-2xl h-20 flex items-center justify-center" onClick={() => handleChangeModal("event")}>
+                            </Box>
+                            <Box
+                                sx={{
+                                    background: "#eab308",
+                                    width: "10rem",
+                                    height: "5rem",
+                                    borderRadius: "2rem",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    color: "white",
+                                    fontWeight: "bold",
+                                    fontSize: "18px",
+                                    border: "2px solid #facc15",
+                                    transition: "0.2s",
+                                    "&:hover": {
+                                        transform: "translateX(10px) scale(1.07)"
+                                    }      
+                                }}
+                                onClick={() => handleChangeModal("event")}>
                                 Eventos
-                            </div>
+                            </Box>
                         </div>
                     )}
 
-                    {selectedKindOfModal === "feed" && <FeedModal />}
+                    {selectedKindOfModal === "feed" && <FeedModal onClick={() => setSelectedKindOfModal(undefined)} />}
 
-                    {selectedKindOfModal === "event" && <EventModal/>}
-                    
+                    {selectedKindOfModal === "event" && <EventModal onClick={() => setSelectedKindOfModal(undefined)} />}
+
                 </div>
             </Modal>
 

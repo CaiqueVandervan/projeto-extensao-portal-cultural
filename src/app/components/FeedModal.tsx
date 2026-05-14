@@ -2,13 +2,27 @@
 
 import { TextField } from "@mui/material"
 import { FaPhotoVideo } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
-const FeedModal = () => {
+interface FeedModalProps {
+    onClick: () => void
+}
+
+const FeedModal = ({ onClick }: FeedModalProps) => {
 
     return (
-        <main className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 grid gap-3 bg-white p-4 rounded-2xl border-2 border-blue-400">
-            <h1 className="text-center text-[#3b82f6]">Adicionar Publicação no Feed</h1>
+        <main className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-2xl border-2 border-blue-400 w-96">
 
+            <div className="relative mb-3">
+
+                <IoMdArrowRoundBack className="absolute top-1 cursor-pointer"
+                    color="#3b82f6"
+                    onClick={onClick} />
+
+                <h1 className="text-center text-[#3b82f6]">Adicionar Publicação no Feed</h1>
+            </div>
+
+            <div className="grid gap-3">
                 <TextField size="small" label="Título" />
 
                 <TextField size="small" label="Descrição" />
@@ -19,7 +33,7 @@ const FeedModal = () => {
                     </p>
                     <FaPhotoVideo size={24} color="#3b82f6" />
                 </div>
-                            
+            </div>
         </main>
     )
 }
